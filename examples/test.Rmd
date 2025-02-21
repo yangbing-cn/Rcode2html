@@ -1,0 +1,81 @@
+---
+title: "Rcode2html test"
+author: "Bing Yang"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "asis")
+```
+
+
+```{r Rcode2html-package-example}
+library(Rcode2html)
+# Note that single quotes or double quotes in the code must be preceded by a backslash.
+code <- "# use package car
+library(car)
+m <- colMeans(x)
+S <- cov(x)
+plot(x[,1], x[,2], pch=19, xlim=c(-2.5,9.5), ylim=c(-2.5,9.5))
+car::ellipse(m, S, 3.03, col=\"brown\", center.cex=1, lwd=3)"
+cat(Rcode2html(code))
+```
+
+
+
+
+
+## other examples
+```{r Rcode2html-package-otherexamples}
+
+cat("<br><br>")
+cat("# code example 2 with default style\n")
+code2 <- "boxplot(diamonds$x ~ diamonds$cut, xlab = \"Cut\", ylab = \"Diamond length\", col=colorsCut)"
+cat(Rcode2html(code2))
+
+cat("<br><br>")
+cat("# code example 3 with default style\n")
+code3<-"Density <- c(0.801, 0.824, 0.841, 0.816, 0.840, 0.842, 0.820,
+            0.802, 0.828, 0.819, 0.826, 0.802, 0.810, 0.802,
+            0.832, 0.796, 0.759, 0.770, 0.759, 0.772, 0.806,
+            0.803, 0.845, 0.822, 0.971, 0.816, 0.836, 0.815,
+            0.822, 0.822, 0.843, 0.824, 0.788, 0.782, 0.795,
+            0.805, 0.836, 0.788, 0.772, 0.758)
+
+Machine.dir <- c(121.41, 127.70, 129.20, 131.80, 135.10, 131.50,
+                 126.70, 115.10, 130.80, 124.60, 118.31, 114.20,
+                 120.30, 115.70, 117.51, 109.81, 109.10, 115.10,
+                 118.31, 112.60, 116.20, 118.00, 131.00, 125.70,
+                 126.10, 125.80, 127.80, 130.50, 127.90, 123.90,
+                 124.10, 120.80, 107.40, 120.70, 121.91, 122.31,
+                 110.60, 103.51, 110.71, 113.80)
+
+Cross.dir <- c(70.42, 72.47, 78.20, 74.89, 71.21, 78.39, 69.02,
+               73.10, 79.28, 76.48, 72.88, 68.23, 68.12, 71.62,
+               53.10, 50.85, 51.68, 50.60, 53.51, 56.53, 70.70,
+               74.35, 68.29, 72.10, 70.64, 76.33, 76.75, 80.33,
+               75.68, 78.54, 71.91, 68.22, 54.42, 70.41, 73.68,
+               74.93, 53.52, 48.93, 53.67, 52.42)
+
+paper <- data.frame(Density, Machine.dir, Cross.dir)"
+
+cat(Rcode2html(code3))
+
+cat("<br><br>")
+cat("# default style with customize colors\n")
+cat(Rcode2html(code, color_backgroud = "#323232",color_operator = "#00BFFF",
+               color_number="#A52A2A", color_quotation = "#CDAD00", color_comments="#6495ED"))
+
+cat("<br><br>")
+cat("# style 2: different backgroud frame\n")
+cat(Rcode2html(code, style=2))
+
+cat("<br><br>")
+cat("# style 3: default font in html\n")
+cat(Rcode2html(code, style=3))
+cat("<br><br>")
+
+```
+
