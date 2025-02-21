@@ -1,0 +1,19 @@
+Package: Rcode2html
+Type: Package
+Title: Syntax Highlighting for R Code in HTML
+Version: 1.0.0
+Authors@R: 
+    c(person(given = "Bing", 
+             family = "Yang", 
+             role = c("aut", "cre"), 
+             email = "bing.yang@kuleuven.be"))
+Description: 
+    The `Rcode2html` package offers syntax highlighting for R code, transforming plain script into visually appealing HTML-formatted code blocks with customizable color palettes. 
+    It supports highlighting different elements of R syntax, such as functions, operators, numbers, comments, and others.
+Maintainer: Bing Yang <bing.yang@kuleuven.be>
+License: GPL (>= 2)
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2024-11-30 21:35:00 UTC; u0156786
+Author: Bing Yang [aut, cre]
